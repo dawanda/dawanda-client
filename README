@@ -1,0 +1,72 @@
+= Dawanda
+
+== Description
+
+The Dawanda gem provides a friendly Ruby interface to the Dawanda API
+
+== Installation
+
+Installing the latest stable version is simple:
+
+    sudo gem install dawanda-dawanda_client --source=http://gems.github.com
+
+== Usage
+
+The Dawanda API is read-only - all you need to gain access is an API Key (available 
+from http://dawanda.com/apps).  Once you have your API key, set it in your script:
+
+    require 'rubygems'
+    require 'dawanda'
+    Dawanda.api_key = 'foobar'
+    Dawanda.country = 'de'
+
+From there, you can make any calls to the API that you need.
+
+=== Users
+
+If you're starting with a user, the easiest way is to use the Dawanda.user method:
+
+    >> user = Dawanda.user('meko')
+    => #<Dawanda::User:0x141bf58 @result={"name"=>"meko", "city"=>"auma", "is_seller"=>true, ...
+    >> user.name
+    => "meko"
+    >> user.id
+    => 13008
+
+For more information about what is available for a user, check out the documentation
+for Dawanda::User.
+
+== Shops
+
+Each user may optionally have a shop.  If a user is a seller, he / she also has an
+associated shop object:
+
+  >> user.seller?
+  => true
+  >> shop = user.shop
+  => #<Dawanda::Shop:0x14170c0 @result={"is_vacation"=>false, "name"=>"MEKO STORE" ...
+  >> shop.name
+  => "MEKO STORE"
+  
+More information about shops can be found in the documentation for Dawanda::Shop.
+  
+== Products
+
+Shops contain multiple listings:
+
+  >> shop.products
+  => [#<Dawanda::Product:0x1405f3c @result={"price"=>{"cents"=>2500, "currency_code"=>"EUR"}, "name"=>"Harmonie", ... ]
+  >> product = shop.products.first
+  => #<Dawanda::Product:0x1405f3c @result={"price"=>{"cents"=>2500, "currency_code"=>"EUR"}, "name"=>"Harmonie", ...
+  >> product.name
+  => "Harmonie"
+  >> listing.description
+  => "Harmonie \n- Inselsymposium / Gimmlitztal \n- Eiche \n- geölt \n- L:150 / Durchmesser ca. 28cm"
+  >> listing.product_url
+  => ""http://de.dawanda.com/product/1-Harmonie""
+  >> listing.view_count
+  => 155
+  >> listing.created_at
+  => Sat Sep 16 01:35:05 +0200 2006
+
+See the documentation for Dawanda::Listing for more information.
