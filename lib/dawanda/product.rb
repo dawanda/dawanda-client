@@ -27,7 +27,7 @@ module Dawanda
     
     include Dawanda::Model
     
-    finder :all, '/shops/:user_id/products'
+    finder :all, '/shops/:shop_id/products'
     finder :all, '/categories/:category_id/products'
     
     

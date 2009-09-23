@@ -40,7 +40,7 @@ module Dawanda
     end
     # Results of the API request
     def result
-      entries == 1 ? to_hash['result'][type] : to_hash['result'].first
+      entries == 1 ? to_hash['result'][type] : to_hash['result'].values.first
     end
     
   end

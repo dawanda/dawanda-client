@@ -11,7 +11,7 @@ require 'dawanda/model'
 require 'dawanda/user'
 require 'dawanda/shop'
 require 'dawanda/product'
- require 'dawanda/category'
+require 'dawanda/category'
 
 # = DaWanda Client: A friendly Ruby interface to the DaWanda API
 #
@@ -39,9 +39,9 @@ require 'dawanda/product'
 #     user.shop.title
 #     
 #     # ... and the listings in the shop
-#     listing = user.shop.listings.first
-#     listing.title
-#     listing.description
+#     product = user.shop.products.first
+#     product.title
+#     product.description
 #     
 # To see what else is available for a user, check out the full documentation for
 # the Dawanda::User class.

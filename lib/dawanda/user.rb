@@ -5,11 +5,14 @@ module Dawanda
   # Represents a single Dawanda user - has the following attributes:
   #
   # [id] The unique identifier for this user
-  # [username] This user's username
-  # [url] The full URL to this user's profile page / shop (if seller)
+  # [name] This user's username
   # [city] The user's city / state (optional)
-  # [gender] The user's gender
+  # [sex] The user's gender
+  # [transaction_sold_count] How many products have been sold by this user
+  # [is_seller] Is this user a seller?
   # [bio] User's biography
+  # [restful_path]
+  # [url] The full URL to this user's profile page / shop (if seller)
   #
   class User
     
@@ -25,7 +28,7 @@ module Dawanda
     # for more information.
     #
     def shop
-      Shop.find_by_user_id(id) if seller?
+      @shop ||= Shop.find_by_user_id(id) if seller?
     end
     
     # Is this user a seller?

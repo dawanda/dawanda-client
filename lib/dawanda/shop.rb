@@ -22,8 +22,9 @@ module Dawanda
     
     attribute :updated, :from => :updated_at
     attribute :created, :from => :created_at
+    attribute :user_id, :from => {:user => :id }
 
-    attributes :banner_image_url, :listing_count, :title, :announcement, :user_id, :name
+    attributes :banner_image_url, :listing_count, :title, :announcement, :name
    
     # Time that this shop was created
     #
@@ -41,8 +42,11 @@ module Dawanda
     # more information
     #
     def products
-      Product.find_all_by_user_id(user_id)
+      @products ||= Product.find_all_by_shop_id(user_id.to_s)
     end
     
+    def user
+      @user ||= User.find_by_user_id(user_id)
+    end
   end
 end

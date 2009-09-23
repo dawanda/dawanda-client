@@ -8,7 +8,7 @@ module Dawanda
     
     # The base URL for API requests
     def self.base_url
-      url = "http://#{Dawanda.country}.dawanda.com/api/v1"
+      url = "http://#{Dawanda.country}.devanda.com/api/v1"
       puts url
       url
     end
@@ -18,7 +18,10 @@ module Dawanda
     def self.get(resource_path, parameters = {})
       parameters = {:format => 'json'}.update(parameters)
       request = Request.new(resource_path, parameters)
-      Response.new(request.get)
+      puts request.inspect
+      response = Response.new(request.get)
+      puts response.inspect
+      response
     end
     
     # Create a new request for the resource with optional parameters

@@ -4,13 +4,28 @@ module Dawanda
     module ClassMethods
       
       def attribute(name, options = {})
-        from = options.fetch(:from, name)
-
-        class_eval <<-CODE
-          def #{name}
-            @result['#{from}']
-          end
-        CODE
+        from = parse_from(name,options)
+        if from.is_a? Array
+          class_eval <<-CODE
+            def #{name}
+              @result['#{from.first}']['#{from.last}']
+            end
+          CODE
+        else
+          class_eval <<-CODE
+            def #{name}
+              @result['#{from}']
+            end
+          CODE
+        end
+      end
+      
+      def parse_from(name,options)
+        from = options.fetch(:from,name)
+        return from unless from.is_a? Hash
+        key = from.keys.first
+        value = from.fetch(key)
+        [key,value]
       end
       
       def attributes(*names)
