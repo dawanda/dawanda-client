@@ -9,7 +9,7 @@ Gem::Specification.new do |s|
   s.date = %q{2009-09-17}
   s.email = %q{info@christophbuente.de}
   s.extra_rdoc_files = ["README.rdoc"]
-  s.files = ["README.rdoc", "Rakefile", "lib/dawanda", "lib/dawanda/image.rb", "lib/dawanda/listing.rb", "lib/dawanda/model.rb", "lib/dawanda/request.rb", "lib/dawanda/response.rb", "lib/dawanda/shop.rb", "lib/dawanda/user.rb", "lib/dawanda/version.rb", "lib/dawanda.rb", "test/fixtures", "test/fixtures/getShopDetails.json", "test/fixtures/getShopListings.json", "test/fixtures/getUserDetails.json", "test/test_helper.rb", "test/unit", "test/unit/dawanda", "test/unit/dawanda/image_test.rb", "test/unit/dawanda/listing_test.rb", "test/unit/dawanda/request_test.rb", "test/unit/dawanda/response_test.rb", "test/unit/dawanda/shop_test.rb", "test/unit/dawanda/user_test.rb", "test/unit/dawanda_test.rb"]
+  s.files = ["README.rdoc", "Rakefile", "lib/dawanda", "lib/dawanda/product.rb", "lib/dawanda/model.rb", "lib/dawanda/request.rb", "lib/dawanda/response.rb", "lib/dawanda/shop.rb", "lib/dawanda/user.rb", "lib/dawanda.rb", "test/fixtures", "test/fixtures/getShopDetails.json", "test/test_helper.rb", "test/unit", "test/unit/dawanda", "test/unit/dawanda/shop_test.rb"]
   s.has_rdoc = true
   s.homepage = %q{http://sneaq.net}
   s.rdoc_options = ["--main", "README.rdoc"]
