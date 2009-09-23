@@ -2,7 +2,7 @@
 
 Gem::Specification.new do |s|
   s.name = %q{dawanda_client}
-  s.version = "0.1.0"
+  s.version = "0.1.1"
 
   s.required_rubygems_version = Gem::Requirement.new(">= 0") if s.respond_to? :required_rubygems_version=
   s.authors = ["Christoph Bünte"]
@@ -11,7 +11,7 @@ Gem::Specification.new do |s|
   s.extra_rdoc_files = ["README.rdoc"]
   s.files = ["README.rdoc", "Rakefile", "lib/dawanda", "lib/dawanda/product.rb", "lib/dawanda/model.rb", "lib/dawanda/request.rb", "lib/dawanda/response.rb", "lib/dawanda/shop.rb", "lib/dawanda/user.rb", "lib/category.rb", "lib/dawanda.rb", "test/fixtures", "test/fixtures/getShopDetails.json", "test/test_helper.rb", "test/unit", "test/unit/dawanda", "test/unit/dawanda/shop_test.rb"]
   s.has_rdoc = true
-  s.homepage = %q{http://sneaq.net}
+  s.homepage = %q{http://dawanda.com}
   s.rdoc_options = ["--main", "README.rdoc"]
   s.require_paths = ["lib"]
   s.rubygems_version = %q{1.3.1}
