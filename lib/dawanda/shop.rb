@@ -8,23 +8,22 @@ module Dawanda
   # A shop has the following attributes:
   #
   # [name] The shop's name
-  # [title] A brief heading for the shop's main page
-  # [announcement] An announcement to buyers (displays on the shop's home page)
-  # [message] The message sent to users who buy from this shop
+  # [created_at] An announcement to buyers (displays on the shop's home page)
+  # [updated_at] The message sent to users who buy from this shop
   # [banner_image_url] The full URL to the shops's banner image
-  # [listing_count] The total number of active listings contained in this shop
   #
   class Shop
     
     include Dawanda::Model
 
     finder :one, '/shops/:user_id'
+    finder :all, '/shops/:method'
     
     attribute :updated, :from => :updated_at
     attribute :created, :from => :created_at
     attribute :user_id, :from => {:user => :id }
 
-    attributes :banner_image_url, :listing_count, :title, :announcement, :name
+    attributes :banner_image_url, :name
    
     # Time that this shop was created
     #
@@ -38,15 +37,27 @@ module Dawanda
       Time.parse(updated)
     end
     
-    # A collection of listings in this user's shop. See Dawanda::Listing for
-    # more information
-    #
-    def products
-      @products ||= Product.find_all_by_shop_id(user_id.to_s)
+    # Search for shops with given keyword
+    def self.search(keyword, params = {})
+      params.update(:keyword => keyword)
+      self.find_all_by_method('search', params)
     end
     
-    def user
-      @user ||= User.find_by_user_id(user_id)
+    # A collection of products in this user's shop. See Dawanda::Product for
+    # more information
+    #
+    def products(params = {})
+      @products ||= Product.find_all_by_shop_id(user_id.to_s, params)
+    end
+    
+    # The user who runs this shop. See Dawanda::User for more information
+    def user(params = {})
+      @user ||= User.find_by_user_id(user_id, params)
+    end
+    
+    # All shop categories in this shop. See Dawanda::ShopCategory for more information
+    def shop_categories(params = {})
+      @shop_categories ||= ShopCategory.find_all_by_shop_id(user_id.to_s, params)
     end
   end
 end

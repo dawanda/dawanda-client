@@ -12,6 +12,8 @@ require 'dawanda/user'
 require 'dawanda/shop'
 require 'dawanda/product'
 require 'dawanda/category'
+require 'dawanda/shop_category'
+require 'dawanda/color'
 
 # = DaWanda Client: A friendly Ruby interface to the DaWanda API
 #
@@ -38,7 +40,7 @@ require 'dawanda/category'
 #     user.shop
 #     user.shop.title
 #     
-#     # ... and the listings in the shop
+#     # ... and the products in the shop
 #     product = user.shop.products.first
 #     product.title
 #     product.description
@@ -69,20 +71,24 @@ module Dawanda
   end
   
   # Find a user by username.  See Dawanda::User for more information.
-  def self.user(username)
-    User.find_by_user_id(username)
+  def self.user(username_or_id)
+    User.find_by_user_id(username_or_id)
   end
   
-  def self.shop(username)
-    Shop.find_by_user_id(username)
+  def self.shop(username_or_id)
+    Shop.find_by_user_id(username_or_id)
   end
   
   def self.product(product_id)
-    Product.find_by_product_id(product_id)
+    Product.find_by_id(product_id)
   end
   
   def self.category(category_id)
-    Category.find_by_category_id(category_id)
+    Category.find_by_id(category_id)
+  end
+  
+  def self.shop_category(shop_category_id)
+    ShopCategory.find_by_id(shop_category_id)
   end
   
 end

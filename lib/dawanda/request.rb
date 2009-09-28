@@ -16,6 +16,7 @@ module Dawanda
     def self.get(resource_path, parameters = {})
       parameters = {:format => 'json'}.update(parameters)
       request = Request.new(resource_path, parameters)
+      puts request.inspect
       response = Response.new(request.get)
       response
     end

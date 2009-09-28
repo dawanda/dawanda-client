@@ -1,6 +1,6 @@
 module Dawanda
   
-  # = User
+  # = Category
   #
   # Represents a single Dawanda category - has the following attributes:
   #
@@ -13,12 +13,24 @@ module Dawanda
     
     include Dawanda::Model
     
-    finder :one, '/categories/:category_id'
+    finder :all, '/categories/:name'
+    finder :all, '/categories/:parent_id/children'
+    finder :one, '/categories/:id'
     
     attributes :id, :parent_id, :name, :product_count
     
-    def products
-      Product.find_all_by_category_id(id)
+    def products(params = {})
+      @products ||= Product.find_all_by_category_id(id, params)
+    end
+    
+    def self.top(params = {})
+      # This is a hack, because dynamic finder generation takes at least
+      # one placeholder like ":name"
+      self.find_all_by_name('top', params)
+    end
+    
+    def children(params = {})
+      Category.find_all_by_parent_id(id, params)
     end
     
   end

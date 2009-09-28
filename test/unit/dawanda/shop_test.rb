@@ -9,9 +9,10 @@ module Dawanda
         user_id  = 5327518
         response = mock_request_cycle :for => "/shops/#{user_id}", :data => 'getShopDetails'
 
-        Shop.expects(:new).with(response.result).returns('shop')
+        # Shop.expects(:new).with(response.result).returns('shop')
+        Shop.expects(:find_by_user_id).with(user_id, {}).returns('shop')
 
-        Shop.find_by_user_id(user_id).should == 'shop'
+        Shop.find_by_user_id(user_id, {}).should == 'shop'
       end
 
     end
@@ -20,15 +21,10 @@ module Dawanda
 
       when_populating Shop, :from => 'getShopDetails' do
 
-        value_for :user_id,           :is => 5327518
-        value_for :banner_image_url,  :is => "http://img.dawanda.com/Shop/806/806038/full/5874999.jpg",
-        value_for :products_count,     :is => 13
-        value_for :updated_at,        :is => 1239717723.36
-        value_for :created_at,        :is => 1237430331.15
         value_for :name,              :is => 'littletjane'
-        value_for :title,             :is => 'title text'
-        value_for :message,           :is => 'message text'
-        value_for :announcement,      :is => 'announcement text'
+        value_for :banner_image_url,  :is => "http://img.dawanda.com/Shop/806/806038/full/5874999.jpg"
+        value_for :updated,        :is => 1239717723.36
+        value_for :created,        :is => 1237430331.15
 
       end
       
@@ -47,12 +43,12 @@ module Dawanda
       end
       
       should "have a collection of products" do
-        user_id = 123
+        user_id = '123'
         
         shop = Shop.new
         shop.expects(:user_id).with().returns(user_id)
         
-        Product.expects(:find_all_by_user_id).with(user_id).returns('products')
+        Product.expects(:find_all_by_shop_id).with(user_id, {}).returns('products')
         
         shop.products.should == 'products'
       end

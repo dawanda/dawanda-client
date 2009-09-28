@@ -19,6 +19,7 @@ module Dawanda
     include Dawanda::Model
     
     finder :one, '/users/:user_id'
+    finder :all, '/users/:method'
     
     # attribute :last_login, :from => :last_login_epoch
 
@@ -27,8 +28,14 @@ module Dawanda
     # This user's shop, returns nil if user is not a seller. See Dawanda::Shop
     # for more information.
     #
-    def shop
-      @shop ||= Shop.find_by_user_id(id) if seller?
+    def shop(params = {})
+      @shop ||= Shop.find_by_user_id(id, params) if seller?
+    end
+
+    # Search for users with given keyword
+    def self.search(keyword, params = {})
+      params.update(:keyword => keyword)
+      self.find_all_by_method('search', params)
     end
     
     # Is this user a seller?

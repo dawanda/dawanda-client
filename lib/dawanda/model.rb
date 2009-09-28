@@ -43,8 +43,8 @@ module Dawanda
       
       def find_all(parameter, endpoint)
         class_eval <<-CODE
-          def self.find_all_by_#{parameter}(#{parameter})
-            response = Request.get("#{endpoint}")
+          def self.find_all_by_#{parameter}(#{parameter}, params = {})
+            response = Request.get("#{endpoint}", params)
             response.result.map {|listing| new(listing) }
           end
         CODE
@@ -52,8 +52,8 @@ module Dawanda
       
       def find_one(parameter, endpoint)
         class_eval <<-CODE
-          def self.find_by_#{parameter}(#{parameter})
-            response = Request.get("#{endpoint}")
+          def self.find_by_#{parameter}(#{parameter}, params = {})
+            response = Request.get("#{endpoint}", params)
             new response.result
           end
         CODE

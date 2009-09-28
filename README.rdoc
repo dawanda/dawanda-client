@@ -52,7 +52,7 @@ More information about shops can be found in the documentation for Dawanda::Shop
   
 == Products
 
-Shops contain multiple listings:
+Shops contain multiple products:
 
   >> shop.products
   => [#<Dawanda::Product:0x1405f3c @result={"price"=>{"cents"=>2500, "currency_code"=>"EUR"}, "name"=>"Harmonie", ... ]
@@ -60,13 +60,13 @@ Shops contain multiple listings:
   => #<Dawanda::Product:0x1405f3c @result={"price"=>{"cents"=>2500, "currency_code"=>"EUR"}, "name"=>"Harmonie", ...
   >> product.name
   => "Harmonie"
-  >> listing.description
+  >> product.description
   => "Harmonie \n- Inselsymposium / Gimmlitztal \n- Eiche \n- geölt \n- L:150 / Durchmesser ca. 28cm"
-  >> listing.product_url
+  >> product.product_url
   => ""http://de.dawanda.com/product/1-Harmonie""
-  >> listing.view_count
+  >> product.view_count
   => 155
-  >> listing.created_at
+  >> product.created_at
   => Sat Sep 16 01:35:05 +0200 2006
 
-See the documentation for Dawanda::Listing for more information.
+See the documentation for [Dawanda::Product|http://wiki.github.com/dawanda/dawanda-api/data-type-product] for more information.
