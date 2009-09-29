@@ -36,3 +36,21 @@ task :github do
   File.open(file, 'w') {|f| f << spec.to_ruby }
   puts "Created gemspec: #{file}"
 end
+
+namespace :doc do
+
+  desc 'generate doc'
+  task :generate do
+    `rdoc`
+  end
+  
+  desc 'clean up all docs'
+  task :clean do
+    `rm -fr doc`
+  end
+  
+  desc 'open docs in browser'
+  task :open do
+    `open doc/index.html`
+  end
+end
