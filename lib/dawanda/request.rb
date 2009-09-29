@@ -13,12 +13,11 @@ module Dawanda
     
     # Perform a GET request for the resource with optional parameters - returns
     # A Response object with the payload data
+    # 
     def self.get(resource_path, parameters = {})
       parameters = {:format => 'json'}.update(parameters)
       request = Request.new(resource_path, parameters)
-      puts request.inspect
-      response = Response.new(request.get)
-      response
+      Response.new(request.get)
     end
     
     # Create a new request for the resource with optional parameters
@@ -30,7 +29,13 @@ module Dawanda
     # Perform a GET request against the API endpoint and return the raw
     # response data
     def get
-      Net::HTTP.get(endpoint_uri)
+      response = Net::HTTP.get_response(endpoint_uri)
+      case response
+      when Net::HTTPSuccess, Net::HTTPRedirection
+        return response.body
+      else 
+        raise response.body
+      end
     end
     
     def parameters # :nodoc:
