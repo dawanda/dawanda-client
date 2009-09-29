@@ -20,20 +20,20 @@ require 'dawanda/color'
 # == Quick Start
 # 
 # Getting started is easy.  First, you will need a valid API key from the Dawanda 
-# developer site (http://developer.dawanda.com/).  Since the API is read-only at
+# developer site (http://dawanda.com/apps).  Since the API is read-only at
 # the moment, that's all you need to do.
 # 
 # To start using the API, require the dawanda gem and set it up to use your API key:
 # 
 #     require 'rubygems'
-#     require 'dawanda_client'
+#     require 'dawanda'
 #     
 #     Dawanda.api_key = 'itsasecret'
 #     
 # Now you can make API calls that originate from an Dawanda user:
 # 
 #     # Find a user by username
-#     user = Dawanda.user('littletjane')
+#     user = Dawanda.user('meko')
 #     
 #     # Grab that user's shop information
 #     user.seller?
@@ -75,18 +75,22 @@ module Dawanda
     User.find_by_user_id(username_or_id)
   end
   
+  # Find a shop by username.  See Dawanda::Shop for more information.
   def self.shop(username_or_id)
     Shop.find_by_user_id(username_or_id)
   end
   
+  # Find a product by id.  See Dawanda::Product for more information.
   def self.product(product_id)
     Product.find_by_id(product_id)
   end
   
+  # Find a category by id.  See Dawanda::Category for more information.
   def self.category(category_id)
     Category.find_by_id(category_id)
   end
   
+  # Find a shop_category by id.  See Dawanda::ShopCategory for more information.
   def self.shop_category(shop_category_id)
     ShopCategory.find_by_id(shop_category_id)
   end
