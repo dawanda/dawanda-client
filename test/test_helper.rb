@@ -10,7 +10,7 @@ class Test::Unit::TestCase
 
   def self.read_fixture(method_name)
     file = File.dirname(__FILE__) + "/fixtures/#{method_name}.json"
-    JSON.parse(File.read(file))['results']
+    JSON.parse(File.read(file))['response']['result']
   end
 
   def read_fixture(method_name)
@@ -24,14 +24,18 @@ class Test::Unit::TestCase
     data = data.first if data.size == 1
 
     response.stubs(:result).with().returns(data)
-
-    Dawanda::Request.stubs(:get).with(options[:for]).returns(response)
+    Dawanda::Request.stubs(:get).with(options[:for], {}).returns(response)
 
     response
   end
 
   def self.when_populating(klass, options, &block)
-    data = options[:from].is_a?(String) ? read_fixture(options[:from])[0] : options[:from].call
+    if options[:from].is_a?(String)
+      puts options[:from]
+      data = read_fixture(options[:from]).values.first
+    else
+      data = options[:from].call
+    end
 
     context "with data populated for #{klass}" do
       setup { @object = klass.new(data) }

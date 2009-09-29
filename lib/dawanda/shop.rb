@@ -19,11 +19,12 @@ module Dawanda
     finder :one, '/shops/:user_id'
     finder :all, '/shops/:method'
     
-    attribute :updated, :from => :updated_at
-    attribute :created, :from => :created_at
-    attribute :user_id, :from => {:user => :id }
+    attribute :updated,           :from => :updated_at
+    attribute :created,           :from => :created_at
+    attribute :user_id,           :from => { :user => :id }
+    attribute :banner_image_url,  :from => { :images => :banner }
 
-    attributes :banner_image_url, :name
+    attributes :name
    
     # Time that this shop was created
     #
