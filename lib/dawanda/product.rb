@@ -62,8 +62,6 @@ module Dawanda
       self.find_all_by_hex_search(color, params)
     end
     
-    
-    
     # The primary image for this product.  See Dawanda::Image for more
     # information
     #
@@ -76,7 +74,7 @@ module Dawanda
     end
     
     def shop(params = {})
-      Shop.find_by_id(user_id)
+      Shop.find_by_user_id(user_id)
     end
   end
 end
