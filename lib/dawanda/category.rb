@@ -17,6 +17,7 @@ module Dawanda
     
     finder :all, '/categories/:name'
     finder :all, '/categories/:parent_id/children'
+    finder :all, '/channels/:channel_id/categories'
     finder :one, '/categories/:id'
     
     attributes :id, :parent_id, :name, :product_count
