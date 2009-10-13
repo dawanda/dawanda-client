@@ -14,6 +14,7 @@ module Dawanda
     
     include Dawanda::Model
 
+    finder :all, '/:method'
     finder :one, '/channels/:channel_id'
     
     attributes :id, :name
@@ -21,6 +22,10 @@ module Dawanda
     # Get all categories for this channel.
     def categories(params = {})
       @categories ||= Category.find_all_by_channel_id(id, params)
+    end
+
+    def self.all(params = {})
+      find_all_by_method('channels')
     end
   end
 end

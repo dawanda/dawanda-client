@@ -5,12 +5,12 @@
 
 Gem::Specification.new do |s|
   s.name = %q{dawanda_client}
-  s.version = "0.1.5"
+  s.version = "0.1.6"
 
   s.required_rubygems_version = Gem::Requirement.new(">= 0") if s.respond_to? :required_rubygems_version=
   s.authors = ["Christoph B\303\274nte"]
-  s.date = %q{2009-09-30}
-  s.description = %q{Describe your gem}
+  s.date = %q{2009-10-13}
+  s.description = %q{Provides a friendly ruby-like interface to the Dawanda API}
   s.email = %q{info@christophbuente.de}
   s.extra_rdoc_files = [
     "LICENSE",
@@ -22,9 +22,10 @@ Gem::Specification.new do |s|
      "README.rdoc",
      "Rakefile",
      "VERSION",
-     "dawanda.gemspec",
+     "dawanda_client.gemspec",
      "lib/dawanda.rb",
      "lib/dawanda/category.rb",
+     "lib/dawanda/channel.rb",
      "lib/dawanda/color.rb",
      "lib/dawanda/model.rb",
      "lib/dawanda/product.rb",
@@ -49,7 +50,7 @@ Gem::Specification.new do |s|
   s.homepage = %q{http://github.com/dawanda/dawanda_client}
   s.rdoc_options = ["--charset=UTF-8"]
   s.require_paths = ["lib"]
-  s.rubygems_version = %q{1.3.4}
+  s.rubygems_version = %q{1.3.5}
   s.summary = %q{Provides a friendly ruby-like interface to the Dawanda API}
   s.test_files = [
     "test/test_helper.rb",

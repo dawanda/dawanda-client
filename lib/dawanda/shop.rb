@@ -44,6 +44,10 @@ module Dawanda
       self.find_all_by_method('search', params)
     end
     
+    def self.all(params = {})
+      find_all_by_method('shops')
+    end
+
     # A collection of products in this user's shop. See Dawanda::Product for
     # more information
     #

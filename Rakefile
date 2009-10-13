@@ -35,7 +35,7 @@ begin
   Jeweler::Tasks.new do |gemspec|
     gemspec.name = "dawanda_client"
     gemspec.summary = "Provides a friendly ruby-like interface to the Dawanda API"
-    gemspec.description = "Describe your gem"
+    gemspec.description = "Provides a friendly ruby-like interface to the Dawanda API"
     gemspec.email = 'info@christophbuente.de'
     gemspec.homepage = "http://github.com/dawanda/dawanda_client"
     gemspec.authors = ['Christoph Bünte']
