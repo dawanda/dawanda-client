@@ -8,7 +8,7 @@ The Dawanda gem provides a friendly Ruby interface to the Dawanda API
  
 Installing the latest stable version is simple:
 
-    sudo gem install dawanda-dawanda_client --source=http://gems.github.com
+    sudo gem install dawanda_client --source=http://gemcutter.org
 
 == Usage
 
